@@ -16,13 +16,13 @@ help () {
   echo ""
   echo "  -h|--help                   Display this menu"
   echo "  -u|--url <url>              URL to the Git repository"
-  echo '                                (Default URL: "https://github.com/open-cluster-management/policy-collection.git")'
+  echo '                                (Default URL: "https://github.com/kenmoini/policy-collection.git")'
   echo "  -b|--branch <branch>        Branch of the Git repository to point to"
   echo '                                (Default branch: "main")'
   echo "  -p|--path <path/to/dir>     Path to the desired subdirectory of the Git repository"
   echo "                                (Default path: stable)"
   echo "  -n|--namespace <namespace>  Namespace on the cluster to deploy policies to (must exist already)"
-  echo '                                (Default namespace: "policies")'
+  echo '                                (Default namespace: "acm-policies")'
   echo "  -a|--name <resource-name>   Prefix for the Channel and Subscription resources"
   echo '                                (Default name: "demo-stable-policies")'
   echo "  -s|--sync <rate>            How frequently the github resources are compared to the hub resources"
@@ -81,9 +81,9 @@ set -- "${POSITIONAL[@]}" # restore positional parameters
 echo "Deploying policies using the following configuration:"
 echo "====================================================="
 echo "kubectl config:     $(kubectl config get-contexts | awk '/^\052/ {print $4"/"$3}')"
-echo "Cluster Namespace:  ${NAMESPACE:=policies}"
+echo "Cluster Namespace:  ${NAMESPACE:=acm-policies}"
 echo "Resource Prefix:    ${NAME:=demo-stable-policies}"
-echo "Git URL:            ${GH_URL:=https://github.com/open-cluster-management/policy-collection.git}"
+echo "Git URL:            ${GH_URL:=https://github.com/kenmoini/policy-collection.git}"
 echo "Git Branch:         ${GH_BRANCH:=main}"
 echo "Git Path:           ${GH_PATH:=stable}"
 echo "Sync Rate:          ${RATE:=medium}"
